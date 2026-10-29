@@ -1,6 +1,7 @@
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useNavigate } from '@remix-run/react'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Button } from './Button'
 import { Icon } from './Icon/Icon'
 import { Tooltip } from './Tooltip'
@@ -15,8 +16,9 @@ export const LeaveRoomButton: FC<LeaveRoomButtonProps> = ({
 	meetingId,
 }) => {
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 	return (
-		<Tooltip content="Leave">
+		<Tooltip content={t('room.leave')}>
 			<Button
 				displayType="danger"
 				onClick={() => {
@@ -27,7 +29,7 @@ export const LeaveRoomButton: FC<LeaveRoomButtonProps> = ({
 					)
 				}}
 			>
-				<VisuallyHidden>Leave</VisuallyHidden>
+				<VisuallyHidden>{t('room.leave')}</VisuallyHidden>
 				<Icon type="phoneXMark" />
 			</Button>
 		</Tooltip>

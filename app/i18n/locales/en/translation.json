@@ -16,9 +16,14 @@
     "error": "Error",
     "retry": "Retry",
     "change": "Change",
+    "reportBug": "Report bug",
     "newRoom": "New Room",
     "or": "Or",
-    "and": "and"
+    "and": "and",
+    "more": "More",
+    "moreOptions": "More options",
+    "meetingLogs": "Meeting Logs",
+    "meetingId": "Meeting Id"
   },
   "auth": {
     "loggedInAs": "Logged in as {{name}}",
@@ -35,7 +40,7 @@
     "micOff": "Mic is turned off",
     "cameraOff": "Camera is turned off",
     "copyUrl": "Copy URL",
-    "urlCopied": "URL copied to clipboard"
+    "urlCopied": "URL copied to the clipboard"
   },
   "room": {
     "title": "Meeting Room",
@@ -49,7 +54,15 @@
     "stopRecord": "Stop Recording",
     "invite": "Invite",
     "muteAll": "Mute All",
-    "unmuteAll": "Unmute All"
+    "unmuteAll": "Unmute All",
+    "leave": "Leave",
+    "more": "More",
+    "enableDataSaver": "Enable Data Saver",
+    "disableDataSaver": "Disable Data Saver",
+    "enableAudioOnly": "Enable Audio Only",
+    "disableAudioOnly": "Disable Audio Only",
+    "copyUrl": "Copy URL",
+    "urlCopied": "URL copied to the clipboard"
   },
   "settings": {
     "title": "Settings",

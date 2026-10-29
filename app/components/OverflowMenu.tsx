@@ -1,6 +1,7 @@
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import type { FC } from 'react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRoomContext } from '~/hooks/useRoomContext'
 import { useRoomUrl } from '~/hooks/useRoomUrl'
 import { Button } from './Button'
@@ -15,6 +16,7 @@ interface OverflowMenuProps {
 }
 
 export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
+	const { t } = useTranslation()
 	const {
 		room: { otherUsers, identity },
 		dataSaverMode,
@@ -33,7 +35,7 @@ export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger asChild>
 					<Button displayType="secondary">
-						<VisuallyHidden>More options</VisuallyHidden>
+						<VisuallyHidden>{t('common.moreOptions')}</VisuallyHidden>
 						<Icon type="EllipsisVerticalIcon" />
 					</Button>
 				</DropdownMenu.Trigger>
@@ -44,7 +46,9 @@ export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
 								onSelect={() => setDataSaverMode(!dataSaverMode)}
 							>
 								<Icon type="WifiIcon" className="mr-2" />
-								{dataSaverMode ? 'Disable Data Saver' : 'Enable Data Saver'}
+								{dataSaverMode
+									? t('room.disableDataSaver')
+									: t('room.enableDataSaver')}
 							</DropdownMenu.Item>
 						)}
 						<DropdownMenu.Item
@@ -54,13 +58,15 @@ export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
 							}}
 						>
 							<Icon type="PhoneIcon" className="mr-2" />
-							{audioOnlyMode ? 'Disable Audio Only' : 'Enable Audio Only'}
+							{audioOnlyMode
+								? t('room.disableAudioOnly')
+								: t('room.enableAudioOnly')}
 						</DropdownMenu.Item>
 						<DropdownMenu.Item
 							onSelect={() => navigator.clipboard.writeText(roomUrl)}
 						>
 							<Icon type="ClipboardDocumentIcon" className="mr-2" />
-							Copy URL
+							{t('room.copyUrl')}
 						</DropdownMenu.Item>
 						<DropdownMenu.Item
 							onSelect={() => {
@@ -68,7 +74,7 @@ export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
 							}}
 						>
 							<Icon type="cog" className="mr-2" />
-							Settings
+							{t('settings.title')}
 						</DropdownMenu.Item>
 						{bugReportsEnabled && (
 							<DropdownMenu.Item
@@ -77,7 +83,7 @@ export const OverflowMenu: FC<OverflowMenuProps> = ({ bugReportsEnabled }) => {
 								}}
 							>
 								<Icon type="bug" className="mr-2" />
-								Report bug
+								{t('common.reportBug')}
 							</DropdownMenu.Item>
 						)}
 						<DropdownMenu.Item

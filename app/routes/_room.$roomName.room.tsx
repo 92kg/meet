@@ -34,6 +34,7 @@ import { useUserJoinLeaveToasts } from '~/hooks/useUserJoinLeaveToasts'
 import { dashboardLogsLink } from '~/utils/dashboardLogsLink'
 import getUsername from '~/utils/getUsername.server'
 import isNonNullable from '~/utils/isNonNullable'
+import { cn } from '~/utils/style'
 
 export const loader = async ({ request, context }: LoaderFunctionArgs) => {
 	const username = await getUsername(request)
@@ -193,7 +194,13 @@ function JoinedRoom({ bugReportsEnabled }: { bugReportsEnabled: boolean }) {
 					</div>
 					<Toast.Viewport className="absolute bottom-0 right-0" />
 				</div>
-				<div className="flex flex-wrap items-center justify-center gap-2 p-2 text-sm md:gap-4 md:p-5 md:text-base">
+				<div className={cn(
+	'flex flex-wrap items-center justify-center gap-2 p-2 text-sm md:gap-4 md:p-5 md:text-base',
+	// mobile: compact controls, keep within safe-area
+	'max-md:[&>button]:py-[.4em] max-md:[&>button]:px-[.6em]',
+	'max-md:[&>button]:text-[0.7rem] max-md:[&>button]:tracking-normal',
+	'max-md:pb-[max(0.5rem,env(safe-area-inset-bottom))]'
+)}>
 					{hasAiCredentials && <AiButton recordActivity={recordActivity} />}
 					<MicButton warnWhenSpeakingWhileMuted />
 					<CameraButton />
