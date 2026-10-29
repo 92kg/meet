@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "Orange Meets",
+    "description": "基于 Cloudflare 的实时视频会议"
+  },
+  "common": {
+    "join": "加入",
+    "leave": "离开",
+    "settings": "设置",
+    "copy": "复制",
+    "copied": "已复制！",
+    "close": "关闭",
+    "cancel": "取消",
+    "save": "保存",
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试",
+    "change": "更改",
+    "newRoom": "新建房间",
+    "or": "或",
+    "and": "和"
+  },
+  "auth": {
+    "loggedInAs": "当前登录：{{name}}",
+    "setUsername": "设置用户名",
+    "username": "用户名"
+  },
+  "lobby": {
+    "roomName": "{{name}}",
+    "usersInRoom": "房间内有 {{count}} 位{{count, plural, one {用户} other {用户}}}",
+    "joinRoom": "加入房间",
+    "orJoinRoom": "或加入房间",
+    "roomNameLabel": "房间名称",
+    "previewTitle": "预览",
+    "micOff": "麦克风已关闭",
+    "cameraOff": "摄像头已关闭",
+    "copyUrl": "复制链接",
+    "urlCopied": "链接已复制到剪贴板"
+  },
+  "room": {
+    "title": "会议室",
+    "participants": "参会者",
+    "noParticipants": "暂无其他参会者",
+    "raiseHand": "举手",
+    "lowerHand": "放下手",
+    "screenShare": "共享屏幕",
+    "stopScreenShare": "停止共享",
+    "record": "录制",
+    "stopRecord": "停止录制",
+    "invite": "邀请",
+    "muteAll": "全部静音",
+    "unmuteAll": "取消全员静音"
+  },
+  "settings": {
+    "title": "设置",
+    "camera": "摄像头",
+    "microphone": "麦克风",
+    "blurBackground": "背景虚化",
+    "suppressNoise": "噪音抑制",
+    "language": "语言",
+    "theme": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "errors": {
+    "micPermissionDenied": "麦克风权限被拒绝。请开启权限并刷新页面重试。",
+    "cameraPermissionDenied": "摄像头权限被拒绝。请开启权限并刷新页面重试。",
+    "bothPermissionDenied": "麦克风和摄像头权限均被拒绝。请开启权限并刷新页面重试。",
+    "noMicFound": "未找到可用麦克风。",
+    "noCameraFound": "未找到可用摄像头。",
+    "unknownMicError": "麦克风发生未知错误。",
+    "unknownCameraError": "摄像头发生未知错误。",
+    "connectionError": "连接出错，请重试。",
+    "sessionError": "会话错误：{{error}}"
+  },
+  "toasts": {
+    "highPacketLoss": "检测到高丢包率，连接可能不稳定。",
+    "iceDisconnected": "连接中断，正在尝试重连...",
+    "safetyNumber": "安全码已验证",
+    "userJoined": "{{name}} 加入了房间",
+    "userLeft": "{{name}} 离开了房间",
+    "aiInvited": "AI 已被邀请加入房间"
+  },
+  "disclaimer": {
+    "text": "这是一个演示应用，请勿用于敏感对话。"
+  },
+  "footer": {
+    "poweredBy": "由 Cloudflare Realtime 提供支持"
+  }
+}

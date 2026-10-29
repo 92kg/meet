@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "Orange Meets",
+    "description": "Real-time video conferencing powered by Cloudflare"
+  },
+  "common": {
+    "join": "Join",
+    "leave": "Leave",
+    "settings": "Settings",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "change": "Change",
+    "newRoom": "New Room",
+    "or": "Or",
+    "and": "and"
+  },
+  "auth": {
+    "loggedInAs": "Logged in as {{name}}",
+    "setUsername": "Set Username",
+    "username": "Username"
+  },
+  "lobby": {
+    "roomName": "{{name}}",
+    "usersInRoom": "{{count}} {{count, plural, one {user} other {users}} in the room",
+    "joinRoom": "Join Room",
+    "orJoinRoom": "Or join a room",
+    "roomNameLabel": "Room name",
+    "previewTitle": "Preview",
+    "micOff": "Mic is turned off",
+    "cameraOff": "Camera is turned off",
+    "copyUrl": "Copy URL",
+    "urlCopied": "URL copied to clipboard"
+  },
+  "room": {
+    "title": "Meeting Room",
+    "participants": "Participants",
+    "noParticipants": "No other participants",
+    "raiseHand": "Raise Hand",
+    "lowerHand": "Lower Hand",
+    "screenShare": "Share Screen",
+    "stopScreenShare": "Stop Sharing",
+    "record": "Record",
+    "stopRecord": "Stop Recording",
+    "invite": "Invite",
+    "muteAll": "Mute All",
+    "unmuteAll": "Unmute All"
+  },
+  "settings": {
+    "title": "Settings",
+    "camera": "Camera",
+    "microphone": "Microphone",
+    "blurBackground": "Blur Background",
+    "suppressNoise": "Suppress Noise",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "errors": {
+    "micPermissionDenied": "Microphone permission was denied. Enable permission and reload to join.",
+    "cameraPermissionDenied": "Camera permission was denied. Enable permission and reload to join.",
+    "bothPermissionDenied": "Microphone and camera permissions were denied. Enable permissions and reload to join.",
+    "noMicFound": "No working microphone found.",
+    "noCameraFound": "No working webcam found.",
+    "unknownMicError": "Unknown microphone error.",
+    "unknownCameraError": "Unknown webcam error.",
+    "connectionError": "Connection error. Please try again.",
+    "sessionError": "Session error: {{error}}"
+  },
+  "toasts": {
+    "highPacketLoss": "High packet loss detected. Your connection may be unstable.",
+    "iceDisconnected": "Connection lost. Attempting to reconnect...",
+    "safetyNumber": "Safety number verified",
+    "userJoined": "{{name}} joined",
+    "userLeft": "{{name}} left",
+    "aiInvited": "AI invited to the room"
+  },
+  "disclaimer": {
+    "text": "This is a demo application. Do not use for sensitive conversations."
+  },
+  "footer": {
+    "poweredBy": "Powered by Cloudflare Realtime"
+  }
+}

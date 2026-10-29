@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRoomContext } from '~/hooks/useRoomContext'
 import { AudioInputSelector } from './AudioInputSelector'
 import { Button } from './Button'
@@ -12,6 +13,7 @@ import {
 } from './Dialog'
 import { Icon } from './Icon/Icon'
 import { Label } from './Label'
+import { LanguageSelector } from './LanguageSelector'
 import { Toggle } from './Toggle'
 import { Tooltip } from './Tooltip'
 import { VideoInputSelector } from './VideoInputSelector'
@@ -23,9 +25,10 @@ interface SettingsDialogProps {
 }
 
 export const SettingsButton = () => {
+	const { t } = useTranslation()
 	return (
 		<SettingsDialog>
-			<Tooltip content="Settings">
+			<Tooltip content={t('settings.title')}>
 				<Trigger asChild>
 					<Button className="text-sm" displayType="secondary">
 						<Icon type="cog" />
@@ -41,6 +44,7 @@ export const SettingsDialog: FC<SettingsDialogProps> = ({
 	open,
 	children,
 }) => {
+	const { t } = useTranslation()
 	const {
 		userMedia: { blurVideo, setBlurVideo, suppressNoise, setSuppressNoise },
 	} = useRoomContext()
@@ -51,27 +55,27 @@ export const SettingsDialog: FC<SettingsDialogProps> = ({
 			<Portal>
 				<DialogOverlay />
 				<DialogContent>
-					<DialogTitle>Settings</DialogTitle>
+					<DialogTitle>{t('settings.title')}</DialogTitle>
 					<div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 mt-8 items-center">
 						<Label
 							className="text-base -mb-2 md:mb-0 text-left md:text-right"
 							htmlFor="camera"
 						>
-							Camera
+							{t('settings.camera')}
 						</Label>
 						<VideoInputSelector id="camera" />
 						<Label
 							className="text-base -mb-2 md:mb-0 text-left md:text-right"
 							htmlFor="mic"
 						>
-							Mic
+							{t('settings.microphone')}
 						</Label>
 						<AudioInputSelector id="mic" />
 						<Label
 							className="text-base -mb-2 md:mb-0 text-left md:text-right"
 							htmlFor="blurBackground"
 						>
-							Blur Background
+							{t('settings.blurBackground')}
 						</Label>
 						<div>
 							<Toggle
@@ -84,7 +88,7 @@ export const SettingsDialog: FC<SettingsDialogProps> = ({
 							className="text-base -mb-2 md:mb-0 text-left md:text-right"
 							htmlFor="suppressNoise"
 						>
-							Suppress Noise
+							{t('settings.suppressNoise')}
 						</Label>
 						<div>
 							<Toggle
@@ -92,6 +96,15 @@ export const SettingsDialog: FC<SettingsDialogProps> = ({
 								checked={suppressNoise}
 								onCheckedChange={setSuppressNoise}
 							/>
+						</div>
+						<Label
+							className="text-base -mb-2 md:mb-0 text-left md:text-right"
+							htmlFor="language"
+						>
+							{t('settings.language')}
+						</Label>
+						<div>
+							<LanguageSelector />
 						</div>
 					</div>
 				</DialogContent>

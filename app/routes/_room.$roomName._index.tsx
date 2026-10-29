@@ -3,6 +3,7 @@ import type { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { json } from '@remix-run/cloudflare'
 import { useNavigate, useParams, useSearchParams } from '@remix-run/react'
 import { useObservableAsValue } from 'partytracks/react'
+import { useTranslation } from 'react-i18next'
 import invariant from 'tiny-invariant'
 import { AudioIndicator } from '~/components/AudioIndicator'
 import { Button } from '~/components/Button'
@@ -52,6 +53,7 @@ export default function Lobby() {
 	const { videoStreamTrack, audioStreamTrack, audioEnabled } = userMedia
 	const session = useObservableAsValue(partyTracks.session$)
 	const sessionError = useObservableAsValue(partyTracks.sessionError$)
+	const { t } = useTranslation()
 	trackRefreshes()
 
 	const joinedUsers = new Set(
@@ -67,11 +69,9 @@ export default function Lobby() {
 			<div className="flex-1"></div>
 			<div className="space-y-4 w-96">
 				<div>
-					<h1 className="text-3xl font-bold">{roomName}</h1>
+					<h1 className="text-3xl font-bold">{t('lobby.roomName', { name: roomName })}</h1>
 					<p className="text-sm text-zinc-500 dark:text-zinc-400">
-						{`${joinedUsers} ${
-							joinedUsers === 1 ? 'user' : 'users'
-						} in the room.`}{' '}
+						{t('lobby.usersInRoom', { count: joinedUsers })}
 					</p>
 				</div>
 				<div className="relative">
@@ -89,10 +89,10 @@ export default function Lobby() {
 									{audioEnabled ? (
 										<AudioIndicator audioTrack={audioStreamTrack} />
 									) : (
-										<Tooltip content="Mic is turned off">
+										<Tooltip content={t('lobby.micOff')}>
 											<div className="text-white indication-shadow">
 												<Icon type="micOff" />
-												<VisuallyHidden>Mic is turned off</VisuallyHidden>
+												<VisuallyHidden>{t('lobby.micOff')}</VisuallyHidden>
 											</div>
 										</Tooltip>
 									)}
@@ -103,7 +103,7 @@ export default function Lobby() {
 				</div>
 				{sessionError && (
 					<div className="p-3 rounded-md text-sm text-zinc-800 bg-red-200 dark:text-zinc-200 dark:bg-red-700">
-						{sessionError}
+						{t('errors.sessionError', { error: sessionError })}
 					</div>
 				)}
 				{(userMedia.audioUnavailableReason ||
@@ -111,37 +111,27 @@ export default function Lobby() {
 					<div className="p-3 rounded-md text-sm text-zinc-800 bg-zinc-200 dark:text-zinc-200 dark:bg-zinc-700">
 						{userMedia.audioUnavailableReason === 'NotAllowedError' &&
 							userMedia.videoUnavailableReason === undefined && (
-								<p>Mic permission was denied.</p>
+								<p>{t('errors.micPermissionDenied')}</p>
 							)}
 						{userMedia.videoUnavailableReason === 'NotAllowedError' &&
 							userMedia.audioUnavailableReason === undefined && (
-								<p>Camera permission was denied.</p>
+								<p>{t('errors.cameraPermissionDenied')}</p>
 							)}
 						{userMedia.audioUnavailableReason === 'NotAllowedError' &&
 							userMedia.videoUnavailableReason === 'NotAllowedError' && (
-								<p>Mic and camera permissions were denied.</p>
+								<p>{t('errors.bothPermissionDenied')}</p>
 							)}
-						{userMedia.audioUnavailableReason === 'NotAllowedError' && (
-							<p>
-								Enable permission
-								{userMedia.audioUnavailableReason &&
-								userMedia.videoUnavailableReason
-									? 's'
-									: ''}{' '}
-								and reload the page to join.
-							</p>
-						)}
 						{userMedia.audioUnavailableReason === 'DevicesExhaustedError' && (
-							<p>No working microphone found.</p>
+							<p>{t('errors.noMicFound')}</p>
 						)}
 						{userMedia.videoUnavailableReason === 'DevicesExhaustedError' && (
-							<p>No working webcam found.</p>
+							<p>{t('errors.noCameraFound')}</p>
 						)}
 						{userMedia.audioUnavailableReason === 'UnknownError' && (
-							<p>Unknown microphone error.</p>
+							<p>{t('errors.unknownMicError')}</p>
 						)}
 						{userMedia.videoUnavailableReason === 'UnknownError' && (
-							<p>Unknown webcam error.</p>
+							<p>{t('errors.unknownCameraError')}</p>
 						)}
 					</div>
 				)}
@@ -158,12 +148,12 @@ export default function Lobby() {
 						}}
 						disabled={!session?.sessionId}
 					>
-						Join
+						{t('lobby.joinRoom')}
 					</Button>
 					<MicButton />
 					<CameraButton />
 					<SettingsButton />
-					<Tooltip content="Copy URL">
+					<Tooltip content={t('lobby.copyUrl')}>
 						<CopyButton contentValue={roomUrl}></CopyButton>
 					</Tooltip>
 				</div>
